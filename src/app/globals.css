@@ -6,3 +6,24 @@ html,
 body {
    font-family: Arial, Helvetica, sans-serif;
 }
+
+@layer base {
+   body {
+      @apply scrollbar-hide;
+   }
+}
+
+[data-theme="mytheme"] .input-bordered {
+   border-width: 2px;
+   outline: none;
+}
+
+[data-theme="mytheme"] .btn {
+   text-transform: none;
+   min-height: 2rem;
+}
+
+[data-theme="mytheme"] .btn-primary:hover,
+.btn-neutral:hover {
+   color: #fff;
+}
