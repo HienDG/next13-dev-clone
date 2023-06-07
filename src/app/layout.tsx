@@ -1,7 +1,7 @@
 import type { NextPage, Metadata } from "next";
 import React from "react";
 
-import { RecoilProvider } from "@src/context";
+import { RecoilProvider, AuthProvider, HotToastProvider } from "@src/context";
 
 import "./globals.css";
 
@@ -14,7 +14,11 @@ const RootLayout: NextPage<React.PropsWithChildren> = ({ children }) => {
    return (
       <html lang="en" data-theme="mytheme">
          <body>
-            <RecoilProvider>{children}</RecoilProvider>
+            <RecoilProvider>
+               <AuthProvider>
+                  <HotToastProvider>{children}</HotToastProvider>
+               </AuthProvider>
+            </RecoilProvider>
          </body>
       </html>
    );

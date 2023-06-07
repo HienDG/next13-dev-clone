@@ -8,7 +8,7 @@ type Children = React.PropsWithChildren;
 type Variants = "error" | "primary" | "secondary" | "ghost" | "info" | "accent" | "neutral";
 type Sizes = "md" | "lg" | "xs" | "sm";
 
-interface ButtonProps extends ButtonAttributes, Children {
+export interface ButtonProps extends ButtonAttributes, Children {
    variant?: Variants;
    size?: Sizes;
    isLoading?: boolean;
@@ -38,12 +38,16 @@ const Button: React.FC<ButtonProps> = ({
             ["btn-lg"]: size === "lg",
             ["btn-xs"]: size === "xs",
             ["btn-sm"]: size === "sm",
-            ["loading"]: isLoading,
+
             ["btn-outline"]: outline,
          })}
          {...rest}
       >
-         {children}
+         {isLoading ? (
+            <span className="loading loading-infinity loading-lg"></span>
+         ) : (
+            <>{children}</>
+         )}
       </button>
    );
 };

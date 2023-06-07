@@ -1,6 +1,12 @@
+/* eslint-disable no-console */
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { HOME_PATH } from "@src/utils/constants";
 
 import { signUpSchema, type SignUpSchema } from "@src/libs/validations";
 
@@ -13,6 +19,7 @@ const defaultValues: SignUpSchema = {
 
 const useCreateUserWithCredentials = () => {
    const [isLoading, setIsLoading] = useState<boolean>(false);
+   const router = useRouter();
 
    const {
       register,
@@ -25,8 +32,29 @@ const useCreateUserWithCredentials = () => {
       defaultValues,
    });
 
-   const onSubmit: SubmitHandler<SignUpSchema> = (data) => {
-      console.log(data);
+   const onSubmit: SubmitHandler<SignUpSchema> = async (data) => {
+      setIsLoading(true);
+      try {
+         const { email, username, password } = data;
+         await axios.post("/api/auth/sign-up", { email, username, password });
+
+         const res = await signIn("credentials", {
+            email,
+            password,
+            redirect: false,
+         });
+
+         if (!res?.ok || !!res.error) throw res?.error;
+
+         toast.success("Thanks for signing up. Your account has been created.");
+         router.push(HOME_PATH);
+      } catch (error: unknown) {
+         console.error(error);
+         toast.error("Something went wrong");
+      }
+
+      reset();
+      setIsLoading(false);
    };
 
    return {
