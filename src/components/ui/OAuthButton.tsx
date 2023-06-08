@@ -2,20 +2,13 @@
 
 import React from "react";
 import { signIn } from "next-auth/react";
-import { IconType } from "react-icons";
 
-import { Button, type ButtonProps } from "@src/components/ui";
+import { Button } from "@src/components/ui";
+import type { OAuthButtonObject } from "@src/@types/button";
 
-import { HOME_PATH } from "@src/utils/constants";
+type ProviderType = OAuthButtonObject["provider"];
 
-type ProviderType = "google" | "github";
-
-interface OAuthButtonProps
-   extends Pick<ButtonProps, "size" | "className" | "variant" | "isLoading" | "outline"> {
-   icon: IconType;
-   label: string;
-   provider: ProviderType;
-}
+interface OAuthButtonProps extends OAuthButtonObject {}
 
 const OAuthButton: React.FC<OAuthButtonProps> = ({ icon: Icon, label, provider, ...restProps }) => {
    const signInWithProvider = async (provider: ProviderType) =>

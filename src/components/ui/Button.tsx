@@ -2,18 +2,9 @@ import React from "react";
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 
-type ButtonAttributes = React.ButtonHTMLAttributes<HTMLButtonElement>;
-type Children = React.PropsWithChildren;
+import { ButtonBaseObject } from "@src/@types/button";
 
-type Variants = "error" | "primary" | "secondary" | "ghost" | "info" | "accent" | "neutral";
-type Sizes = "md" | "lg" | "xs" | "sm";
-
-export interface ButtonProps extends ButtonAttributes, Children {
-   variant?: Variants;
-   size?: Sizes;
-   isLoading?: boolean;
-   outline?: boolean;
-}
+interface ButtonProps extends ButtonBaseObject {}
 
 const Button: React.FC<ButtonProps> = ({
    children,
@@ -32,7 +23,7 @@ const Button: React.FC<ButtonProps> = ({
             ["btn-secondary"]: variant === "secondary",
             ["btn-ghost"]: variant === "ghost",
             ["btn-info"]: variant === "info",
-            ["btn-accent"]: variant === "accent",
+            ["btn-accent text-white"]: variant === "accent",
             ["btn-neutral"]: variant === "neutral",
             ["btn-md"]: size === "md",
             ["btn-lg"]: size === "lg",
