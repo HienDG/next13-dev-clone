@@ -4,11 +4,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import { HOME_PATH } from "@src/utils/constants";
+import { HOME_URL } from "@src/utils/constants";
 
 const Logo: React.FC = () => {
    return (
-      <Link href={HOME_PATH} className="w-[50px] h-[40px]">
+      <Link href={HOME_URL} className="w-[50px] h-[40px]">
          <Image
             src="/images/logo.png"
             alt="logo"

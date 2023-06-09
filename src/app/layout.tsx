@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 const RootLayout: NextPage<React.PropsWithChildren> = ({ children }) => {
    return (
-      <html lang="en" data-theme="mytheme">
+      <html lang="en" data-theme="light">
          <body>
             <RecoilProvider>
                <AuthProvider>

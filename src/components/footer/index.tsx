@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 
-import { HOME_PATH } from "@src/utils/constants";
+import { HOME_URL } from "@src/utils/constants";
 
 const Footer: React.FC = () => {
    return (
@@ -11,7 +11,7 @@ const Footer: React.FC = () => {
          <div className="flex flex-row justify-center w-full gap-2 py-1 mx-auto max-w-7xl">
             <p className="text-sm">
                <Link
-                  href={HOME_PATH}
+                  href={HOME_URL}
                   className="font-semibold text-blue-600 capitalize hover:underline"
                >
                   DEV Community{" "}

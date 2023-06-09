@@ -4,7 +4,7 @@ import React from "react";
 import { signIn } from "next-auth/react";
 
 import { Button } from "@src/components/ui";
-import type { OAuthButtonObject } from "@src/@types/button";
+import type { OAuthButtonObject } from "@src/types/button";
 
 type ProviderType = OAuthButtonObject["provider"];
 
@@ -14,7 +14,7 @@ const OAuthButton: React.FC<OAuthButtonProps> = ({ icon: Icon, label, provider, 
    const signInWithProvider = async (provider: ProviderType) =>
       await signIn(provider, {
          redirect: false,
-         //callbackUrl: HOME_PATH
+         //callbackUrl: HOME_URL
       });
 
    return (

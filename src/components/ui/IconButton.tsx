@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 import { Button } from "@src/components/ui";
 
-import { IconButtonObject } from "@src/@types/button";
+import { IconButtonObject } from "@src/types/button";
 
 interface IconButtonProps extends IconButtonObject {
    iconClassName?: string;

@@ -6,7 +6,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
 import { signInSchema, type SignInSchema } from "@src/libs/validations";
-import { HOME_PATH } from "@src/utils/constants";
+import { HOME_URL } from "@src/utils/constants";
 
 const defaultValues: SignInSchema = {
    email: "",
@@ -42,7 +42,7 @@ const useLoginWithCredentials = () => {
          if (!res?.ok || !!res.error) throw res?.error;
 
          toast.success("You are successfully logged in");
-         router.push(HOME_PATH);
+         router.push(HOME_URL);
       } catch (error: unknown) {
          // eslint-disable-next-line no-console
          console.error(error);

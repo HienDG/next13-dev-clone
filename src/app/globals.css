@@ -13,17 +13,17 @@ body {
    }
 }
 
-[data-theme="mytheme"] .input-bordered {
+[data-theme="light"] .input-bordered {
    border-width: 2px;
    outline: none;
 }
 
-[data-theme="mytheme"] .btn {
+[data-theme="light"] .btn {
    text-transform: none;
    min-height: 2rem;
 }
 
-[data-theme="mytheme"] .btn-primary:hover,
+[data-theme="light"] .btn-primary:hover,
 .btn-neutral:hover {
    color: #fff;
 }

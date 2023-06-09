@@ -17,7 +17,7 @@ const LoadingModal = () => {
                leaveFrom="opacity-100"
                leaveTo="opacity-0"
             >
-               <div className="fixed inset-0 bg-base-100 z-200" />
+               <div className="fixed inset-0 bg-neutral bg-opacity-70 z-200" />
             </Transition.Child>
 
             <div className="fixed inset-0 overflow-y-auto z-500">
@@ -32,7 +32,7 @@ const LoadingModal = () => {
                      leaveTo="opacity-0 scale-95"
                   >
                      <Dialog.Panel className="">
-                        <SyncLoader color="blue" />
+                        <SyncLoader color="white" />
                      </Dialog.Panel>
                   </Transition.Child>
                </div>

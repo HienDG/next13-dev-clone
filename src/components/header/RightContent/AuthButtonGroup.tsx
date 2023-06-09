@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@src/components/ui";
 
-import { SIGN_IN_PATH, SIGN_UP_PATH } from "@src/utils/constants";
+import { SIGN_IN_URL, SIGN_UP_URL } from "@src/utils/constants";
 
 interface AuthButtonGroupProps {}
 
@@ -18,7 +18,7 @@ const AuthButtonGroup: React.FC<AuthButtonGroupProps> = () => {
       <div className="gap-2 join">
          <Button
             variant="ghost"
-            onClick={() => handleNavigation(SIGN_IN_PATH)}
+            onClick={() => handleNavigation(SIGN_IN_URL)}
             className="hidden md:block"
          >
             Login
@@ -27,7 +27,7 @@ const AuthButtonGroup: React.FC<AuthButtonGroupProps> = () => {
             outline
             variant="primary"
             className="mr-2"
-            onClick={() => handleNavigation(SIGN_UP_PATH)}
+            onClick={() => handleNavigation(SIGN_UP_URL)}
          >
             Create account
          </Button>

@@ -6,7 +6,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { HOME_PATH } from "@src/utils/constants";
+import { HOME_URL } from "@src/utils/constants";
 
 import { signUpSchema, type SignUpSchema } from "@src/libs/validations";
 
@@ -47,7 +47,7 @@ const useCreateUserWithCredentials = () => {
          if (!res?.ok || !!res.error) throw res?.error;
 
          toast.success("Thanks for signing up. Your account has been created.");
-         router.push(HOME_PATH);
+         router.push(HOME_URL);
       } catch (error: unknown) {
          console.error(error);
          toast.error("Something went wrong");

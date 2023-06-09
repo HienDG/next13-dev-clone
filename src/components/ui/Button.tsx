@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 
-import { ButtonBaseObject } from "@src/@types/button";
+import { ButtonBaseObject } from "@src/types/button";
 
 interface ButtonProps extends ButtonBaseObject {}
 
@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
    return (
       <button
          className={clsx("btn", twMerge("h-10 text-base", className), {
-            ["btn-primary text-white"]: variant === "primary",
+            ["btn-primary"]: variant === "primary",
             ["btn-error"]: variant === "error",
             ["btn-secondary"]: variant === "secondary",
             ["btn-ghost"]: variant === "ghost",

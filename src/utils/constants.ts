@@ -1,5 +1,6 @@
-export const HOME_PATH = "/";
-export const SIGN_IN_PATH = "/sign-in";
-export const SIGN_UP_PATH = "/sign-up";
+export const HOME_URL = "/";
+export const SIGN_IN_URL = "/sign-in";
+export const SIGN_UP_URL = "/sign-up";
+export const SIGN_OUT_CONFIRM_URL = "/signout_confirm";
 
 export const SALT_ROUNDS = 12;

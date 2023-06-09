@@ -28,7 +28,7 @@ const MenuDropdown: React.FC<MenuDropdownProps> = ({ children, avatar, className
             >
                <Menu.Items
                   className={clsx(
-                     "absolute right-0 [&>div]:w-full w-60 mt-2 [&>div]:p-2 origin-top-right z-100 bg-white divide-y divide-gray-200 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none",
+                     "absolute right-0 [&>div]:w-full w-72 mt-2 overflow-hidden origin-top-right z-100 bg-base-100 divide-y divide-gray-200 rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none",
                      twMerge(className)
                   )}
                >

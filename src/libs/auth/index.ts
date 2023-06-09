@@ -58,6 +58,7 @@ export const authOptions: AuthOptions = {
                name: user.name,
                id: user.id,
                image: user.image,
+               username: user.username,
             };
          },
       }),
@@ -67,5 +68,24 @@ export const authOptions: AuthOptions = {
    session: {
       strategy: "jwt",
       maxAge: 24 * 60 * 60, // 1 day
+   },
+   callbacks: {
+      async jwt({ account, user, token }) {
+         if (account && user) {
+            token.idToken = account.id_token;
+            token.username = user.username;
+         }
+
+         return token;
+      },
+
+      async session({ session, token }) {
+         if (token) {
+            session.user.username = token.username;
+            session.user.idToken = token.idToken;
+         }
+
+         return session;
+      },
    },
 };

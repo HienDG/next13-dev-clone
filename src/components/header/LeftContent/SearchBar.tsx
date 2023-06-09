@@ -21,7 +21,7 @@ const SearchBar: React.FC = () => {
                   placeholder="Search..."
                   autoComplete="off"
                />
-               <button className="absolute left-auto px-2 inset-1 btn-dev" type="submit">
+               <button className="absolute left-auto px-2 cursor-default inset-1" type="submit">
                   <BsSearch className="w-6 h-6" />
                </button>
             </div>

@@ -15,25 +15,21 @@ export interface AvatarProps {
 }
 
 const Avatar: React.FC<AvatarProps> = ({
-   width = 32,
-   height = 32,
+   width = 36,
+   height = 36,
    className,
    src = "/images/user_placeholder.png",
 }) => {
    return (
       <div className="avatar">
-         <div
-            className={clsx(
-               "rounded-full w-9 hover:ring hover:ring-neutral/20 ring-offset-base-100 ring-offset-1",
-               twMerge(className)
-            )}
-         >
+         <div className={clsx(twMerge("rounded-full w-9 h-9", className))}>
             <Image
                src={src}
                alt="avatar"
                width={width}
                height={height}
-               className="inline-block w-full h-full align-bottom"
+               className="inline-block object-fill w-full h-full align-bottom"
+               priority
             />
          </div>
       </div>
