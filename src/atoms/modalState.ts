@@ -1,14 +1,14 @@
 import { atom } from "recoil";
 
-type ModalView = "sign-out";
+type ModalView = "editor";
 
 interface ModalStore {
-   view: ModalView | null;
+   view: ModalView;
    isOpen: boolean;
 }
 
 const initialStore: ModalStore = {
-   view: null,
+   view: "editor",
    isOpen: false,
 };
 

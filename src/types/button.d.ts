@@ -8,7 +8,7 @@ type Variants = "error" | "primary" | "secondary" | "ghost" | "info" | "accent" 
 type Sizes = "md" | "lg" | "xs" | "sm";
 type ProviderType = "google" | "github";
 
-interface DaisyUiButton {
+export interface DaisyUiButton {
    variant?: Variants;
    size?: Sizes;
    isLoading?: boolean;

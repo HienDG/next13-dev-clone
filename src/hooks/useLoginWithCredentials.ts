@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import toast from "react-hot-toast";
@@ -28,30 +28,33 @@ const useLoginWithCredentials = () => {
       defaultValues,
    });
 
-   const onSubmit: SubmitHandler<SignInSchema> = async (data) => {
-      setIsLoading(true);
-      try {
-         const { email, password } = data;
+   const onSubmit: SubmitHandler<SignInSchema> = useCallback(
+      async (data) => {
+         setIsLoading(true);
+         try {
+            const { email, password } = data;
 
-         const res = await signIn("credentials", {
-            email,
-            password,
-            redirect: false,
-         });
+            const res = await signIn("credentials", {
+               email,
+               password,
+               redirect: false,
+            });
 
-         if (!res?.ok || !!res.error) throw res?.error;
+            if (!res?.ok || !!res.error) throw res?.error;
 
-         toast.success("You are successfully logged in");
-         router.push(HOME_URL);
-      } catch (error: unknown) {
-         // eslint-disable-next-line no-console
-         console.error(error);
-         toast.error("Something went wrong");
-      }
+            toast.success("You are successfully logged in");
+            router.push(HOME_URL);
+         } catch (error: unknown) {
+            // eslint-disable-next-line no-console
+            console.error(error);
+            toast.error("Something went wrong");
+         }
 
-      reset();
-      setIsLoading(false);
-   };
+         reset();
+         setIsLoading(false);
+      },
+      [reset, router]
+   );
 
    return useMemo(
       () => ({
@@ -62,7 +65,7 @@ const useLoginWithCredentials = () => {
          onSubmit: handleSubmit(onSubmit),
          isLoading,
       }),
-      [errors, handleSubmit, isDirty, isLoading, isValid, register]
+      [errors, handleSubmit, isDirty, isLoading, isValid, onSubmit, register]
    );
 };
 

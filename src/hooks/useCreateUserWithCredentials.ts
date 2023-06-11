@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
@@ -32,39 +32,45 @@ const useCreateUserWithCredentials = () => {
       defaultValues,
    });
 
-   const onSubmit: SubmitHandler<SignUpSchema> = async (data) => {
-      setIsLoading(true);
-      try {
-         const { email, username, password } = data;
-         await axios.post("/api/auth/sign-up", { email, username, password });
+   const onSubmit: SubmitHandler<SignUpSchema> = useCallback(
+      async (data) => {
+         setIsLoading(true);
+         try {
+            const { email, username, password } = data;
+            await axios.post("/api/auth/sign-up", { email, username, password });
 
-         const res = await signIn("credentials", {
-            email,
-            password,
-            redirect: false,
-         });
+            const res = await signIn("credentials", {
+               email,
+               password,
+               redirect: false,
+            });
 
-         if (!res?.ok || !!res.error) throw res?.error;
+            if (!res?.ok || !!res.error) throw res?.error;
 
-         toast.success("Thanks for signing up. Your account has been created.");
-         router.push(HOME_URL);
-      } catch (error: unknown) {
-         console.error(error);
-         toast.error("Something went wrong");
-      }
+            toast.success("Thanks for signing up. Your account has been created.");
+            router.push(HOME_URL);
+         } catch (error: unknown) {
+            console.error(error);
+            toast.error("Something went wrong");
+         }
 
-      reset();
-      setIsLoading(false);
-   };
+         reset();
+         setIsLoading(false);
+      },
+      [reset, router]
+   );
 
-   return {
-      onSubmit: handleSubmit(onSubmit),
-      register,
-      errors,
-      isDirty,
-      isValid,
-      isLoading,
-   };
+   return useMemo(
+      () => ({
+         onSubmit: handleSubmit(onSubmit),
+         register,
+         errors,
+         isDirty,
+         isValid,
+         isLoading,
+      }),
+      [errors, handleSubmit, isDirty, isLoading, isValid, onSubmit, register]
+   );
 };
 
 export default useCreateUserWithCredentials;

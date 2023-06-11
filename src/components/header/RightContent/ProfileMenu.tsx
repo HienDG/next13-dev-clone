@@ -11,7 +11,7 @@ import { BsFillPencilFill } from "react-icons/bs";
 
 import { MenuDropdown, MenuItem, Avatar } from "@src/components/ui";
 
-import { SIGN_OUT_CONFIRM_URL } from "@src/utils/constants";
+import { SIGN_OUT_CONFIRM_URL, NEW_URL } from "@src/utils/constants";
 
 interface ProfileMenuProps {
    session: Session;
@@ -34,7 +34,9 @@ const ProfileMenu: React.FC<ProfileMenuProps> = ({ session }) => {
 
          <div className="space-y-2">
             <MenuItem icon={MdOutlineAccountCircle}>Account Setting</MenuItem>
-            <MenuItem icon={BsFillPencilFill}>Create Post</MenuItem>
+            <MenuItem icon={BsFillPencilFill} to={NEW_URL}>
+               Create Post
+            </MenuItem>
             <MenuItem icon={GrNotification}>Notifications</MenuItem>
             <MenuItem icon={IoMdBookmarks}>My Bookmarks</MenuItem>
             <MenuItem icon={AiOutlineFileText}>My Drafts</MenuItem>
