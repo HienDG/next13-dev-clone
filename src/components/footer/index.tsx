@@ -7,7 +7,7 @@ import { HOME_URL } from "@src/utils/constants";
 
 const Footer: React.FC = () => {
    return (
-      <footer className="p-5 lg:p-12 text-neutral bg-base-300">
+      <footer className="p-8 lg:p-12 text-neutral bg-base-300">
          <div className="flex flex-row justify-center w-full gap-2 py-1 mx-auto max-w-7xl">
             <p className="text-sm">
                <Link

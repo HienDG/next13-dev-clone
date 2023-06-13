@@ -17,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
    return (
       <button
-         className={clsx("btn", twMerge("h-10 text-base", className), {
+         className={clsx("btn", twMerge("h-10 text-base font-normal", className), {
             ["btn-primary"]: variant === "primary",
             ["btn-error"]: variant === "error",
             ["btn-secondary"]: variant === "secondary",

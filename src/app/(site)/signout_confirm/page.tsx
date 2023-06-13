@@ -4,9 +4,10 @@ import React from "react";
 import { signOut } from "next-auth/react";
 
 import { Button } from "@src/components/ui";
+import { HOME_URL } from "@src/utils/constants";
 
 const Page: React.FC = () => {
-   const handleSignOut = async () => signOut();
+   const handleSignOut = async () => signOut({ callbackUrl: HOME_URL });
 
    return (
       <div className="flex gap-4 flex-col items-center justify-center text-center h-[calc(100vh-56px)] max-h-screen">

@@ -11,12 +11,12 @@ const FormTabs: React.FC<FormTabsProps> = () => {
       <nav className="flex ml-auto">
          <ul className="flex w-full">
             <li>
-               <Button className="" variant="ghost">
+               <Button className="" type="button" variant="ghost">
                   Edit
                </Button>
             </li>
             <li>
-               <Button className="font-normal" variant="ghost">
+               <Button className="font-normal" type="button" variant="ghost">
                   Preview
                </Button>
             </li>

@@ -64,7 +64,7 @@ model Post {
   title      String
   body       String?
   coverImage String?
-  bookmark   Boolean? @default(false)
+  save       Boolean? @default(false)
   likedId    String[] @default([])
 
   created_at DateTime  @default(now())

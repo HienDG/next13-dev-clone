@@ -15,6 +15,7 @@ const Logo: React.FC = () => {
             width={50}
             height={40}
             className="inline-block object-contain w-full h-full max-w-full align-middle outline-0"
+            priority
          />
       </Link>
    );

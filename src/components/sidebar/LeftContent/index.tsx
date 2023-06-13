@@ -15,7 +15,7 @@ interface LeftContentProps {}
 
 const LeftContent: React.FC<LeftContentProps> = () => {
    return (
-      <aside className="sticky hidden h-full bg-white border border-gray-200 border-solid top-4 lg:block rounded-r-xl">
+      <aside className="hidden h-full top-4 md:block ">
          <NavList>
             <NavItem icon={AiFillHome}>Home</NavItem>
             <NavItem icon={FaUserFriends}>Friends</NavItem>

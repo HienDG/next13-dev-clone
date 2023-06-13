@@ -47,7 +47,7 @@ const Content: React.FC<ContentProps> = () => {
             />
             <TextInput
                placeholder="New post title here..."
-               className="text-xl font-bold textarea-xs lg:text-4xl md:text-2xl"
+               className="text-xl font-bold textarea-xs lg:text-4xl md:text-2xl textarea-bordered"
                value={formStateValue.title}
                onChange={onTitleChange}
             />
@@ -55,8 +55,8 @@ const Content: React.FC<ContentProps> = () => {
 
          <TextInput
             placeholder="Write your post content here"
-            wrapperClassName="flex-1 p-4 lg:px-16 md:p-12 lg:py-8"
-            className="text-xl"
+            wrapperClassName="flex-1 p-4 lg:px-16 md:p-12 lg:py-8 "
+            className="text-xl textarea-bordered"
             value={formStateValue.body}
             onChange={onBodyChange}
          />
