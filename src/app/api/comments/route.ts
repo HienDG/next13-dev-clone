@@ -7,19 +7,18 @@ export const GET = async (request: NextRequest) => {
    try {
       const page = request.nextUrl.searchParams.get("page") as string;
 
-      const take = Number(page) * 5;
-      const skip = Number(page) === 1 ? 0 : (Number(page) - 1) * 5;
+      // const take = Number(page) * 5;
+      // const skip = Number(page) === 1 ? 0 : (Number(page) - 1) * 5;
 
-      const posts = await prismaClient.post.findMany({
+      const posts = await prismaClient.comment.findMany({
          orderBy: {
             created_at: "desc",
          },
          include: {
             user: true,
-            comments: true,
          },
-         skip,
-         take,
+         // skip,
+         // take,
       });
 
       return NextResponse.json(posts);
@@ -30,29 +29,33 @@ export const GET = async (request: NextRequest) => {
    }
 };
 
-export const POST = async (request: Request) => {
+export const POST = async (request: NextRequest) => {
    try {
       const data = await request.json();
 
-      const { image, title, body } = data;
+      const { body, postId } = data;
 
       const currentUser = await getCurrentUser();
 
-      if (!currentUser) return null;
+      if (!currentUser) throw new Error("Unauthorized");
 
-      const newPost = await prismaClient.post.create({
+      const newComment = await prismaClient.comment.create({
          data: {
-            userId: currentUser.id,
-            title,
             body,
-            coverImage: image,
+            postId,
+            userId: currentUser.id,
          },
       });
 
-      return NextResponse.json(newPost);
+      return NextResponse.json(newComment);
    } catch (error: unknown) {
-      // eslint-disable-next-line no-console
-      console.log(error);
-      return null;
+      if (typeof error === "string")
+         return NextResponse.json(error, {
+            status: 401,
+         });
+
+      return NextResponse.json("Internal Server Error ", {
+         status: 500,
+      });
    }
 };

@@ -7,7 +7,7 @@ const getCurrentUser = cache(async () => {
    try {
       const session = await getSession();
 
-      if (!session?.user?.email) throw new Error("You are not currently logged in.");
+      if (!session?.user?.email) return null; // throw new Error("You are not currently logged in.");
 
       const currentUser = await prismaClient.user.findUnique({
          where: {
@@ -15,12 +15,10 @@ const getCurrentUser = cache(async () => {
          },
       });
 
-      if (!currentUser) throw new Error("The email doesn't exist");
+      if (!currentUser) return null; // throw new Error("The email doesn't exist");
 
       return currentUser;
    } catch (error: unknown) {
-      // eslint-disable-next-line no-console
-      console.error(error);
       return null;
    }
 });

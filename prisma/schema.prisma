@@ -47,14 +47,18 @@ model User {
   image         String?
   password      String?
   bio           String?
-  address       String?
+  location      String?
+  education     String?
+  work          String?
+  skills        String?
 
   created_at DateTime  @default(now())
   updated_at DateTime?
 
   accounts Account[]
   sessions Session[]
-  Post     Post[]
+  posts    Post[]
+  comments Comment[]
 }
 
 model Post {
@@ -70,6 +74,20 @@ model Post {
   created_at DateTime  @default(now())
   updated_at DateTime?
 
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  comments Comment[]
+}
+
+model Comment {
+  id     String  @id @default(auto()) @map("_id") @db.ObjectId
+  postId String  @db.ObjectId
+  userId String  @db.ObjectId
+  body   String?
+
+  created_at DateTime  @default(now())
+  updated_at DateTime?
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 

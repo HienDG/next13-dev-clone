@@ -12,6 +12,8 @@ type Params = {
    postId: string;
 };
 
+export const revalidate = 60; // revalidate this page every 60 seconds;
+
 const Post: React.FC<PostProps> = async ({ params: { postId } }) => {
    const post = await getCurrentPost(postId);
 

@@ -10,6 +10,7 @@ const getCurrentPost = cache(async (postId: string) => {
          },
          include: {
             user: true,
+            comments: true,
          },
       });
 

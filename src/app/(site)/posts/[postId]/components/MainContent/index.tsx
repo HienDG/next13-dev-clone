@@ -1,17 +1,21 @@
-"use client";
-
 import React, { Fragment } from "react";
+import { User } from "@prisma/client";
 
 import CoverImage from "./CoverImage";
 import { AuthorBar } from "@src/components/ui";
+import CommentForm from "./CommentForm";
+import CommentList from "./CommentList";
 
+import { getCurrentUser } from "@src/libs/actions";
 import { PostObject } from "@src/types/post";
 
 interface MainContentProps {
    post: PostObject;
 }
 
-const MainContent: React.FC<MainContentProps> = ({ post }) => {
+const MainContent: React.FC<MainContentProps> = async ({ post }) => {
+   const currentUser = await getCurrentUser();
+
    return (
       <div className="w-full min-h-screen bg-white rounded-xl">
          <header>
@@ -21,13 +25,22 @@ const MainContent: React.FC<MainContentProps> = ({ post }) => {
                <h1 className="text-xl font-bold md:text-4xl sm:text-3xl">{post.title}</h1>
             </div>
          </header>
-         <section className="p-3 md:py-8 lg:px-16 md:px-12 sm:px-5 sm:py-5">
+         <section className="p-3 border-b border-solid border-b-gray-200 md:py-8 lg:px-16 md:px-12 sm:px-5 sm:py-5">
             <p className="mb-5">{post.body}</p>
          </section>
-         <section
-            className="p-3 md:py-8 lg:px-16 md:px-12 sm:px-5 sm:py-5"
-            id="#comments"
-         ></section>
+         <section className="w-full p-3 md:py-8 lg:px-16 md:px-12 sm:px-5 sm:py-5" id="#comments">
+            <div className="mb-6">
+               <h1 className="text-2xl font-bold capitalize">
+                  Top Comments ({post.comments.length})
+               </h1>
+            </div>
+
+            <CommentForm user={currentUser as User} postId={post.id} />
+
+            <br className="block w-full h-2 p-4" />
+
+            <CommentList />
+         </section>
       </div>
    );
 };

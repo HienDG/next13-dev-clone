@@ -9,5 +9,6 @@ export const POSTS_URL = "/posts";
 export const USER_URL = "/user";
 
 export const API_POST_URL = "/api/posts";
+export const API_COMMENTS_URL = "/api/comments";
 
 export const SALT_ROUNDS = 12;
