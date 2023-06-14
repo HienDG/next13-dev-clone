@@ -17,6 +17,8 @@ const CoverImage: React.FC<CoverImageProps> = ({ src }) => {
             height={420}
             className="w-full h-full"
             priority
+            placeholder="blur"
+            blurDataURL="/images/image_placeholder.png"
          />
       </div>
    );

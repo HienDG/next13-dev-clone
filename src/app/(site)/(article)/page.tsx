@@ -7,12 +7,12 @@ import { LoadingSkeleton } from "@src/components/ui";
 
 import PostItem from "./components/PostItem";
 
-import { useFetchedPosts } from "@src/hooks";
+import { useFetchPosts } from "@src/hooks";
 
 export const revalidate = 300; // revalidate this page every 300 seconds
 
 const Home = () => {
-   const { posts, isLoading, setSize, isReachedEnd } = useFetchedPosts();
+   const { posts, isLoading, setSize, isReachedEnd } = useFetchPosts();
    const { ref, entry } = useInView({ threshold: 0 });
 
    useEffect(() => {

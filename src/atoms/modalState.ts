@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-type ModalView = "editor";
+type ModalView = "editor" | "un-auth";
 
 interface ModalStore {
    view: ModalView;

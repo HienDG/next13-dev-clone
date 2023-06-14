@@ -6,10 +6,12 @@ import CommentItem from "./CommentItem";
 
 import { useFetchComments } from "@src/hooks";
 
-interface CommentListProps {}
+interface CommentListProps {
+   postId: string;
+}
 
-const CommentList: React.FC<CommentListProps> = () => {
-   const { comments } = useFetchComments();
+const CommentList: React.FC<CommentListProps> = ({ postId }) => {
+   const { comments } = useFetchComments(postId);
    return (
       <div>
          {comments && comments.map((comment) => <CommentItem comment={comment} key={comment.id} />)}

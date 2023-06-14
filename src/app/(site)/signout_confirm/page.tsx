@@ -1,12 +1,13 @@
 "use client";
 
 import React from "react";
+import { NextPage } from "next";
 import { signOut } from "next-auth/react";
 
 import { Button } from "@src/components/ui";
 import { HOME_URL } from "@src/utils/constants";
 
-const Page: React.FC = () => {
+const SignOutConfirm: NextPage = () => {
    const handleSignOut = async () => signOut({ callbackUrl: HOME_URL });
 
    return (
@@ -18,4 +19,4 @@ const Page: React.FC = () => {
       </div>
    );
 };
-export default Page;
+export default SignOutConfirm;

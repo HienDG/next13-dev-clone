@@ -6,7 +6,7 @@ import LeftContent from "./LeftContent";
 
 const Sidebar: React.FC<React.PropsWithChildren> = ({ children }) => {
    return (
-      <div className="mx-auto py-5 grid lg:grid-cols-[240px_1fr_350px] md:grid-cols-[240px_1fr] gap-4 max-w-7xl w-full text-base relative">
+      <div className="mx-auto grid lg:grid-cols-[240px_1fr_350px] md:grid-cols-[240px_1fr] gap-4 max-w-7xl w-full text-base relative lg:p-4 p-2">
          <LeftContent />
 
          <div className="h-full">{children}</div>

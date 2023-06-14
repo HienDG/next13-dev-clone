@@ -13,14 +13,16 @@ interface CoverImageProps {
 
 const CoverImage: React.FC<CoverImageProps> = ({ postId, src }) => {
    return (
-      <div>
-         <Link href={`${POSTS_URL}/${postId}`} className="w-[650px] h-[275px] block mx-auto">
+      <div className="max-w-3xl w-full max-h-[275px] h-[275px]">
+         <Link href={`${POSTS_URL}/${postId}`} className="block w-full h-full">
             <Image
                src={src}
                alt="image"
                width={650}
                height={275}
                className="object-cover w-full h-full sm:rounded-t-lg"
+               placeholder="blur"
+               blurDataURL="/images/image_placeholder.png"
             />
          </Link>
       </div>

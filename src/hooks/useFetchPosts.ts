@@ -10,7 +10,7 @@ const getKey = (pageIndex: number, previousPageData: any) => {
    return `${API_POST_URL}?page=${pageIndex + 1}`; // SWR key
 };
 
-const useFetchedPosts = () => {
+const useFetchPosts = () => {
    const { data, error, mutate, isLoading, size, setSize } = useSWRInfinite<PostObject[], Error>(
       getKey,
       fetcher
@@ -32,4 +32,4 @@ const useFetchedPosts = () => {
    };
 };
 
-export default useFetchedPosts;
+export default useFetchPosts;

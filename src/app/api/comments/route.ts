@@ -5,12 +5,12 @@ import { getCurrentUser } from "@src/libs/actions";
 
 export const GET = async (request: NextRequest) => {
    try {
-      const page = request.nextUrl.searchParams.get("page") as string;
-
-      // const take = Number(page) * 5;
-      // const skip = Number(page) === 1 ? 0 : (Number(page) - 1) * 5;
+      const postId = request.nextUrl.searchParams.get("id") as string;
 
       const posts = await prismaClient.comment.findMany({
+         where: {
+            postId,
+         },
          orderBy: {
             created_at: "desc",
          },
@@ -25,7 +25,9 @@ export const GET = async (request: NextRequest) => {
    } catch (error: unknown) {
       // eslint-disable-next-line no-console
       console.log(error);
-      return [];
+      return NextResponse.json("Internal Server Error", {
+         status: 500,
+      });
    }
 };
 
@@ -54,7 +56,7 @@ export const POST = async (request: NextRequest) => {
             status: 401,
          });
 
-      return NextResponse.json("Internal Server Error ", {
+      return NextResponse.json("Internal Server Error", {
          status: 500,
       });
    }

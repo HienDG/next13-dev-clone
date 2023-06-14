@@ -1,8 +1,9 @@
 import React from "react";
+import { NextPage } from "next";
 
-type pageProps = {};
+interface ProfileProps {}
 
-const page: React.FC<pageProps> = () => {
+const Profile: NextPage<ProfileProps> = () => {
    return <div>Have a good coding</div>;
 };
-export default page;
+export default Profile;

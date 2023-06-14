@@ -9,12 +9,12 @@ import { IconButton } from "@src/components/ui";
 
 import { POSTS_URL } from "@src/utils/constants";
 
-interface CommentsProps {
+interface BottomContentProps {
    postId: string;
    likedId?: string[];
 }
 
-const Comments: React.FC<CommentsProps> = ({ postId, likedId = [] }) => {
+const BottomContent: React.FC<BottomContentProps> = ({ postId, likedId = [] }) => {
    const [save, setSave] = useState<boolean>(false);
 
    const likedIdCount = useMemo(() => likedId.length, [likedId]);
@@ -33,8 +33,12 @@ const Comments: React.FC<CommentsProps> = ({ postId, likedId = [] }) => {
             </Link>
 
             <Link
-               href={`${POSTS_URL}/${postId}#comments`}
+               href={{
+                  pathname: `${POSTS_URL}/${postId}`,
+                  hash: "#comments",
+               }}
                className="h-10 text-sm font-normal btn btn-ghost"
+               scroll
             >
                <AiOutlineComment className="w-5 h-5" />
                Add Comments
@@ -53,4 +57,4 @@ const Comments: React.FC<CommentsProps> = ({ postId, likedId = [] }) => {
       </div>
    );
 };
-export default Comments;
+export default BottomContent;

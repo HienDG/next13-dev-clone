@@ -6,9 +6,7 @@ import { AiOutlineGoogle, AiOutlineGithub } from "react-icons/ai";
 
 import { OAuthButton } from "@src/components/ui";
 
-interface OAuthButtonGroupProps {}
-
-const OAuthButtonGroup: React.FC<OAuthButtonGroupProps> = () => {
+const OAuthButtonGroup: React.FC = () => {
    return (
       <div className="gap-3 flex items-center flex-col [&>button]:w-full [&>button]:h-12 mb-6">
          <OAuthButton

@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
+import { NextPage } from "next";
 
 import { FormController, Input } from "@src/components/form";
 import { Button } from "@src/components/ui";
 
 import { useCreateUserWithCredentials } from "@src/hooks";
 
-const SignUp: React.FC = () => {
+const SignUp: NextPage = () => {
    const { register, isDirty, isLoading, isValid, onSubmit, errors } =
       useCreateUserWithCredentials();
 

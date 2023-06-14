@@ -1,13 +1,14 @@
 "use client";
 
 import React from "react";
+import { NextPage } from "next";
 
 import { FormController, Input } from "@src/components/form";
 import { Button } from "@src/components/ui";
 
 import { useLoginWithCredentials } from "@src/hooks";
 
-const SignIn: React.FC = () => {
+const SignIn: NextPage = () => {
    const { register, isDirty, errors, isLoading, isValid, onSubmit } = useLoginWithCredentials();
 
    return (

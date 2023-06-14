@@ -1,9 +1,10 @@
 import React from "react";
+import { NextPage } from "next";
 
 import Header from "@src/components/header";
 import Footer from "@src/components/footer";
 
-const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
+const MainLayout: NextPage<React.PropsWithChildren> = ({ children }) => {
    return (
       <div className="w-full h-full">
          <Header />
@@ -12,4 +13,4 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
       </div>
    );
 };
-export default Layout;
+export default MainLayout;

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { forwardRef } from "react";
 import clsx from "clsx";
 import { twMerge } from "tailwind-merge";
 
@@ -8,15 +8,13 @@ interface TextInputProps extends React.TextareaHTMLAttributes<HTMLTextAreaElemen
    wrapperClassName?: string;
 }
 
-const TextInput: React.FC<TextInputProps> = ({
-   className,
-   placeholder,
-   wrapperClassName,
-   ...restProps
-}) => {
+// eslint-disable-next-line react/display-name
+const TextInput = forwardRef<HTMLTextAreaElement, TextInputProps>((props, ref) => {
+   const { className, placeholder, wrapperClassName, ...restProps } = props;
    return (
       <div className={clsx(twMerge("mb-2", wrapperClassName))}>
          <textarea
+            ref={ref}
             className={clsx(
                twMerge("w-full h-full  resize-none textarea placeholder:text-slate-700 ", className)
             )}
@@ -25,5 +23,5 @@ const TextInput: React.FC<TextInputProps> = ({
          />
       </div>
    );
-};
+});
 export default TextInput;

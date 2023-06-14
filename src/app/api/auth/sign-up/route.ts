@@ -24,7 +24,7 @@ export const POST = async (request: Request) => {
 
       return NextResponse.json(newUser);
    } catch (error: unknown) {
-      return NextResponse.json(null, {
+      return NextResponse.json("Internal Server Error", {
          status: 500,
       });
    }
